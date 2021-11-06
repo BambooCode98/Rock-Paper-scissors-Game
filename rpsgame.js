@@ -1,11 +1,11 @@
-let options = [' Rock', ' Paper', ' Scissors'];
+//et options = [' Rock', ' Paper', ' Scissors'];
 
-alert(`Choose an option: ${options}`)
+//console.log(`Choose an option: Rock, Paper, Scissors`);
 //input from the player - step 1
-const playerInput = prompt();
+//let playerInput = prompt('choose an option: rock, paper, scissors',);
 
 //input from the computer - step 2
-function computerInput() {
+function computerPlay() {
     let rand = Math.random()
     if (rand < .33) {
         return 'rock';
@@ -15,39 +15,74 @@ function computerInput() {
         return 'scissors';
     }
 }
-const computerInputs = computerInput();
+const computerInputs = computerPlay();
 //compare the two inputs
 function compareInputs(playerInput, computerInputs) {
     if (playerInput === computerInputs) {
         return 'tie';
     } else if (playerInput === 'rock' && computerInputs === 'paper') {
+        computerScore++;
         return 'computer chose paper, you lose!';
     } else if (playerInput === 'paper' && computerInputs === 'scissors') {
+        computerScore++;
         return 'computer chose scissors, you lose!';
     } else if (playerInput === 'scissors' && computerInputs === "rock") {
+        computerScore++;
         return 'computer chose rock, you lose!'; // all losing conditions end here
     } else if (playerInput === 'rock' && computerInputs === 'scissors') {
-        return 'computer chose paper, you win!';
-    } else if (playerInput === 'paper' && computerInputs === 'rock') {
+        playerScore++;
         return 'computer chose scissors, you win!';
+    } else if (playerInput === 'paper' && computerInputs === 'rock') {
+        playerScore++;
+        return 'computer chose rock, you win!';
     } else if (playerInput === 'scissors' && computerInputs === "paper") {
-        return "computer chose rock, you win!";  // all winning conditions end here
-    } else {
+        playerScore++;
+        return "computer chose paper, you win!";  // all winning conditions end here
+    } /*else {
         return 'error';
-    }
+    } */
 }
 
-//output the inputs , times is the amount of times to play
+// scoreinput
+/*if (playerInput.toLowerCase === computerInputs) {
+        playerScore = 0;
+        computerScore = 0;
+    } else if (playerInput === 'rock' && computerInputs === 'paper') {
+        computerScore++;
+    } else if (playerInput === 'paper' && computerInputs === 'scissors') {
+        computerScore++;
+    } else if (playerInput === 'scissors' && computerInputs === "rock") {
+        computerScore++; // all losing conditions end here
+    } else if (playerInput === 'rock' && computerInputs === 'scissors') {
+        playerScore++;
+    } else if (playerInput === 'paper' && computerInputs === 'rock') {
+        playerScore++;
+    } else if (playerInput === 'scissors' && computerInputs === "paper") {
+        playerScore++;  // all winning conditions end here
+    } */
+playerScore = parseInt(0);
+computerScore = parseInt(0);
 
- function finalGame(times) {
-     let scoreboard = 0;
-    for (times = 0; times < 6; times++){
-        if (compareInputs(playerInput, computerInputs))
-        
+//play the game 5 times
+
+for (i = 0; i < 5; i++) {
+    console.log(`Choose an option: Rock, Paper, Scissors`);
+    let playerInput = prompt('choose an option: rock, paper, scissors',);
+    if (playerInput === null) {
+        break;
     }
-    return compareInputs(playerInput, computerInputs);
+    const computerInputs = computerPlay();
+    console.log(compareInputs(playerInput, computerInputs));
+    console.log(`your score is ${playerScore}`);
+    console.log(`computer score is ${computerScore}`);
+    
 }
 
-console.log(finalGame(5));
-console.log(finalGame(5));
-console.log(finalGame(5));
+if (computerScore > playerScore) {
+    alert('you lose');
+ } else if (playerScore > computerScore) {
+     alert('you win');
+ } else if (playerScore === computerScore) {
+     alert('tie');
+ }
+console.log('game over!');
