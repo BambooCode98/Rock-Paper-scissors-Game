@@ -1,10 +1,10 @@
-//et options = [' Rock', ' Paper', ' Scissors'];
+//player input from buttons
+//let playerInput = document.getElementById("rockButton");
+function playerInput(val) {
+    console.log(val);
+}
 
-//console.log(`Choose an option: Rock, Paper, Scissors`);
-//input from the player - step 1
-//let playerInput = prompt('choose an option: rock, paper, scissors',);
-
-//input from the computer - step 2
+//input from the computer
 function computerPlay() {
     let rand = Math.random()
     if (rand < .33) {
@@ -38,28 +38,10 @@ function compareInputs(playerInput, computerInputs) {
     } else if (playerInput === 'scissors' && computerInputs === "paper") {
         playerScore++;
         return "computer chose paper, you win!";  // all winning conditions end here
-    } /*else {
-        return 'error';
-    } */
+    }
 }
 
-// scoreinput
-/*if (playerInput.toLowerCase === computerInputs) {
-        playerScore = 0;
-        computerScore = 0;
-    } else if (playerInput === 'rock' && computerInputs === 'paper') {
-        computerScore++;
-    } else if (playerInput === 'paper' && computerInputs === 'scissors') {
-        computerScore++;
-    } else if (playerInput === 'scissors' && computerInputs === "rock") {
-        computerScore++; // all losing conditions end here
-    } else if (playerInput === 'rock' && computerInputs === 'scissors') {
-        playerScore++;
-    } else if (playerInput === 'paper' && computerInputs === 'rock') {
-        playerScore++;
-    } else if (playerInput === 'scissors' && computerInputs === "paper") {
-        playerScore++;  // all winning conditions end here
-    } */
+
 playerScore = parseInt(0);
 computerScore = parseInt(0);
 
@@ -67,22 +49,40 @@ computerScore = parseInt(0);
 
 for (i = 0; i < 5; i++) {
     console.log(`Choose an option: Rock, Paper, Scissors`);
-    let playerInput = prompt('choose an option: rock, paper, scissors',);
-    if (playerInput === null) {
+    let playerInput2 = playerInput(val);
+    if (playerInput2 === null) {
         break;
     }
     const computerInputs = computerPlay();
-    console.log(compareInputs(playerInput, computerInputs));
-    console.log(`your score is ${playerScore}`);
-    console.log(`computer score is ${computerScore}`);
+    document.getElementById('scoretalk').innerHTML = (compareInputs(playerInput, computerInputs));
+    document.getElementById('scoretalk').innerHTML = (`your score is ${playerScore}`);
+    document.getElementById('scoretalk').innerHTML = (`computer score is ${computerScore}`);
     
 }
 
 if (computerScore > playerScore) {
-    alert('you lose');
+    document.getElementById('winner').innerHTML = ('you lose');
  } else if (playerScore > computerScore) {
-     alert('you win');
+    document.getElementById('winner').innerHTML = ('you win');
  } else if (playerScore === computerScore) {
-     alert('tie');
+    document.getElementById('winner').innerHTML = ('tie');
  }
-console.log('game over!');
+document.getElementById('gameOver').innerHTML = 'game over!';
+console.log(playerInput);
+console.log(document.getElementById("paperButton").addEventListener('click', compareInputs(playerInput, computerInputs)));
+
+document.getElementById("rock").addEventListener('click', playerInput(val));
+document.getElementById("paper").addEventListener('click', playerInput(val));
+document.getElementById("scissor").addEventListener('click', playerInput(val));
+
+
+//stuff to learn from
+// document.getElementById('rockButton').onclick = playerChoice;
+// document.getElementById('paperButton').onclick = playerChoice;
+// document.getElementById('scissorButton').onclick = playerChoice;
+
+// function playerChoice() {
+//     let playerInput = this.id;
+//     console.log(playerInput);
+
+// }

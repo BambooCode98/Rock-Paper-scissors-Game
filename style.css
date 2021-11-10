@@ -1,0 +1,25 @@
+.body {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    height: 100vh;
+    
+}
+
+/* .textBox {
+    border: 1px red solid;
+    height: 75%;
+    width: 25%;
+} */
+
+.scoreBoard {
+    
+    height: 75%;
+    width: 25%;
+}
+.box {
+    
+    height: 75%;
+    width: 25%;
+}
